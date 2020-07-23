@@ -5,9 +5,10 @@
   align-items: flex-end;
   background: rgba(0, 0, 0, 0.3);
 
-  & img {
+  & .map {
     width: 320px;
     height: 390px;
     margin-bottom: 15px;
+    background-color: red;
   }
 }

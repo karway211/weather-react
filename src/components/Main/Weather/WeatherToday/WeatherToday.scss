@@ -1,0 +1,25 @@
+.weather__today {
+  display: flex;
+  justify-content: space-around;
+
+  &-value {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15rem;
+    line-height: 373px;
+    text-transform: uppercase;
+    // color: #ffffff;
+  }
+
+  &__desc__list {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.38rem;
+    line-height: 37px;
+    text-transform: uppercase;
+    // color: #ffffff;
+    &-item {
+        list-style-type: none;
+    }
+  }
+}

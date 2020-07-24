@@ -1,10 +1,10 @@
 import React from 'react';
 import { YMaps, Map, Placemark } from 'react-yandex-maps';
 
-const Maps = () => (
+const Maps = ({latitude, longitude}) => (
   <YMaps>
     <div>
-      <Map className='map' defaultState={{ center: [52.26, 30.58], zoom: 9 }}><Placemark geometry={[52.26, 30.58]}/></Map>
+      <Map className='map' defaultState={{ center: [latitude, longitude], zoom: 9 }}><Placemark geometry={[latitude, longitude]}/></Map>
     </div>
   </YMaps>
 )

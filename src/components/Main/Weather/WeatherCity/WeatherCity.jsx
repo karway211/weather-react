@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import './WeatherCity.scss';
 
-const WeatherCity = () => (
+const WeatherCity = ({city, country}) => (
   <>
-    <h1 className='weather--city'>Гомель, Беларусь</h1>
+    <h1 className='weather--city'>{`${city}, ${country}`}</h1>
   </>
 );
 

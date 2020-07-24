@@ -16,6 +16,7 @@ let initialState = {
   },
   temperature: '20',
   descToday: {
+    icon: '',
     summary: 'MOSTLY CLOUDY',
     feelsLike: '19',
     wind: '4',
@@ -26,10 +27,12 @@ let initialState = {
 const weatherReducer = (state = initialState, action) => {
   switch(action.type) {
     case 'SET_WEATHER_FOR_TODAY':
+      debugger;
       return {
         ...state,
         temperature: Math.round(((action.currently.temperature - 32) * 5) / 9),
-        descToday: {summary: action.currently.summary, 
+        descToday: {icon: action.currently.icon,
+                    summary: action.currently.summary, 
                     feelsLike: Math.round(((action.currently.apparentTemperature - 32) * 5) / 9),
                     wind: Math.round((action.currently.windSpeed * 1000)/3600),
                     humidity: `${+action.currently.humidity * 100}`,

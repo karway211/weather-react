@@ -10,8 +10,7 @@ const WeatherContainer = (props) => {
 
 const mapStateToProps = (state) => ({
   place: state.weatherBlock.place,
-  // date: state.weatherBlock.date,
-  time: state.weatherBlock.time,
+  // time: state.weatherBlock.time,
   temperature: state.weatherBlock.temperature,
   descToday: state.weatherBlock.descToday,
   weatherThreeDay: state.weatherThreeDayBlock,

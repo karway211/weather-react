@@ -5,11 +5,7 @@ let initialState = {
     longitude: '',
   },
   lang: 'en',
-  // date: {
-  //   weekday: 'Mon',
-  //   day: '23',
-  //   month: 'july',
-  // },
+  timezone: '',
   time: '',
   temperature: '20',
   descToday: {
@@ -57,6 +53,7 @@ const weatherReducer = (state = initialState, action) => {
       return {
         ...state,
         time: date.toLocaleString(`${action.lang}-${action.lang.toUpperCase()}`, options),
+        timezone: action.timezone,
       }
     default:
       return state;

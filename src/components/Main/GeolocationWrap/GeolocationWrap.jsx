@@ -1,25 +1,25 @@
-import React, {Component} from 'react';
+import React, { useEffect } from 'react';
 import './GeolocationWrap.scss';
 import Maps from './Map/Map';
 import { usePosition } from 'use-position';
-import { forecast } from '../../../api/forecastAPI';
 
 
-const GeolocationWrap = () => {
+const GeolocationWrap = ({setLocation, getPlace, getWeatherInit, lang}) => {
 
   const watch = true;
   const {
     latitude,
     longitude
   } = usePosition(watch);
-  // let data;
-  // const getData = async () => {
-  //     data = await forecast.getForecast('53','33','ru');
-  //     console.log(data.daily);
-  // }
-
-  // getData();
-
+console.log(usePosition(watch))
+  useEffect(() => {
+    if(latitude && longitude) {
+      setLocation(latitude, longitude);
+      getWeatherInit(latitude, longitude, lang);
+      getPlace(latitude, longitude, lang);
+    }
+  }, [setLocation, getPlace, getWeatherInit, latitude, longitude, lang])
+ 
   return (
     <div className='geolocation-wrapper'>
       <div className='geolocation__map-wrapper'>

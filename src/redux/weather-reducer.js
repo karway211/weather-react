@@ -1,19 +1,16 @@
-import { forecast } from "../api/forecastAPI";
-
 let initialState = {
-  place: {
-    city: 'Gomel',
-    country: 'Belarus',
+  place: 'Gomel, Belarus',
+  location: {
+    latitude: '',
+    longitude: '',
   },
-  date: {
-    weekday: 'Mon',
-    day: '23',
-    month: 'july',
-  },
-  time: {
-    hour: '22',
-    minutes: '34'
-  },
+  lang: 'en',
+  // date: {
+  //   weekday: 'Mon',
+  //   day: '23',
+  //   month: 'july',
+  // },
+  time: '',
   temperature: '20',
   descToday: {
     icon: '',
@@ -27,7 +24,7 @@ let initialState = {
 const weatherReducer = (state = initialState, action) => {
   switch(action.type) {
     case 'SET_WEATHER_FOR_TODAY':
-      debugger;
+      // debugger;
       return {
         ...state,
         temperature: Math.round(((action.currently.temperature - 32) * 5) / 9),
@@ -37,27 +34,40 @@ const weatherReducer = (state = initialState, action) => {
                     wind: Math.round((action.currently.windSpeed * 1000)/3600),
                     humidity: `${+action.currently.humidity * 100}`,
         }
-
-                    
-        
+      }
+    case 'SET_LOCATION':
+      console.log(action.latitude)
+      console.log(action.longitude)
+      return {
+        ...state,
+        location: {
+          latitude: action.latitude,
+          longitude: action.longitude,
+        }
+      }
+    case 'SET_PLACE':
+      return {
+        ...state,
+        place: action.place,
+      }
+    case 'SET_TIME':
+      let date = new Date();
+      let options = { weekday: 'short', month: 'long', day: 'numeric', hour:"2-digit", minute:"2-digit", hour12: false, timeZone: action.timezone };
+      // console.log(date.toLocaleString(`${action.lang}-${action.lang.toUpperCase()}`, options));
+      return {
+        ...state,
+        time: date.toLocaleString(`${action.lang}-${action.lang.toUpperCase()}`, options),
       }
     default:
       return state;
   }
 }
 
-const actions = {
+export const actionsAC = {
   setWeatherForToday: (currently) => ({type: 'SET_WEATHER_FOR_TODAY', currently}),
-}
-
-export const getWeatherToday = (latitude, longitude, lang) => {
-  
-  return async (dispatch) => {
-    const data = await forecast.getForecast(latitude, longitude, lang);
-    dispatch(actions.setWeatherForToday(data.currently));
-    // debugger;
-    console.log(data.currently);
-  }
+  setLocation: (latitude, longitude) => ({type: 'SET_LOCATION', latitude, longitude}),
+  setPlace: (place) => ({type: 'SET_PLACE', place}),
+  setTime: (timezone, lang) => ({type: 'SET_TIME', timezone, lang}),
 }
 
 export default weatherReducer;

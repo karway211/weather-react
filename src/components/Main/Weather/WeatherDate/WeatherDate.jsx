@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './WeatherDate.scss';
 
-const WeatherDate = ({weekday, day, month, hour, minutes}) => (
+const WeatherDate = ({time}) => (
   <div className='weather__date'>
-    <span className='weather__date-current--date'>{`${weekday} ${day} ${month}`}</span>
-    <span className='weather__date-current--time'>{` ${hour}:${minutes}`}</span>
+    <span className='weather__date-current--date'>{`${time}`}</span>
+    {/* <span className='weather__date-current--time'>{` ${hour}:${minutes}`}</span> */}
   </div>
 );
 

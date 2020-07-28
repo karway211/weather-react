@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './WeatherToday.scss';
 
 const WeatherToday = ({temperature, icon, summary, feelsLike, wind, humidity}) => {
@@ -14,7 +14,7 @@ const WeatherToday = ({temperature, icon, summary, feelsLike, wind, humidity}) =
           <li className='weather__today__desc__list-item summary'>{summary}</li>
           <li className='weather__today__desc__list-item feels'>FEELS LIKE: {feelsLike}&deg;</li>
           <li className='weather__today__desc__list-item wind'>WIND: {wind} м/с</li>
-          <li className='weather__today__desc__list-item humidity'>HUMIDITY: {humidity}%</li>
+          <li className='weather__today__desc__list-item humidity'>HUMIDITY: {Math.ceil(humidity)}%</li>
         </ul>
       </div>
     </div>

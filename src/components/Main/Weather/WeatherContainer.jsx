@@ -1,33 +1,21 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './Weather.scss';
-import ThreeDays from './ThreeDays/ThreeDays';
-import WeatherToday from './WeatherToday/WeatherToday';
-import WeatherDate from './WeatherDate/WeatherDate';
-import WeatherCity from './WeatherCity/WeatherCity';
 import Weather from './Weather';
 import { connect } from 'react-redux';
-import { getWeatherToday } from '../../../redux/weather-reducer';
+import { getWeatherInit } from '../../../thunk/getWeatherInit';
 
-class WeatherContainer extends Component {
-
-  componentDidMount() {
-    
-    this.props.getWeatherToday('52.45', '30.98', 'en');
-  }
-
-  render() {
-    // debugger;
-    return <Weather {...this.props} />
-  }
-
+const WeatherContainer = (props) => {
+  return <Weather {...props} />
 }
 
 const mapStateToProps = (state) => ({
   place: state.weatherBlock.place,
-  date: state.weatherBlock.date,
+  // date: state.weatherBlock.date,
   time: state.weatherBlock.time,
   temperature: state.weatherBlock.temperature,
   descToday: state.weatherBlock.descToday,
+  weatherThreeDay: state.weatherThreeDayBlock,
+  location: state.weatherBlock.location,
 })
 
-export default connect(mapStateToProps, {getWeatherToday})(WeatherContainer);
+export default connect(mapStateToProps, {getWeatherInit})(WeatherContainer);

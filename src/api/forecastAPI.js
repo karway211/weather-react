@@ -1,23 +1,15 @@
 import { instance } from "./api";
 
-// const darkskyAPI = {
-//   getWeatherData = async (latitude, longitude, lang) => {
-//     const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-//     let data;
-//     try {
-//         const response = await fetch(`${proxyUrl}https://api.darksky.net/forecast/3ff58e19cb3a6ea2e8c4ab139884c8c7/${latitude},${longitude}?lang=${lang}`);
-//         data = await response.json();
-//         return data;
-//     } catch (err) {
-//         console.log('Sorry, unable to get the current Weather');
-//     }
-//     return data;
-//   }
-// }
-
 export const forecast = {
   async getForecast(latitude, longitude, lang) {
     const response = await instance.get(`${latitude},${longitude}?lang=${lang}`);
+    console.log(response.data);
     return response.data;
   }
 }
+
+export const getNameCity = async ( latitude, longitude, lang) => {
+  const resp = await fetch(`https://geocode-maps.yandex.ru/1.x/?format=json&apikey=71561645-4edf-4651-bd23-4fd153d55e69&geocode=${longitude},${latitude}&lang=${lang}`);
+  const data = await resp.json();
+  return data;
+};

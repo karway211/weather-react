@@ -1,0 +1,19 @@
+.weather__three__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  &-name {
+    color: #ffffff;
+  }
+  &__desc {
+    display: flex;
+    &-temp {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 5rem;
+      line-height: 98px;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+  }
+}

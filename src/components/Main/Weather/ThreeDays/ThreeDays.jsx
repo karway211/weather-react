@@ -1,11 +1,14 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './ThreeDays.scss';
 import Day from './Day/Day';
 
-const ThreeDays = () => (
-  <div className='weather__three'>
-    {[1,2,3].map(el => <Day key={el} />)}
-  </div>
-);
+const ThreeDays = ({weatherThreeDay}) => {
+  
+  return (
+    <div className='weather__three'>
+      {Object.values(weatherThreeDay).map(el => <Day key={`${el.day}ThreeDay`} day={el.day} temperature={el.temperature} icon={el.icon} />)}
+    </div>
+  )
+};
 
 export default ThreeDays;

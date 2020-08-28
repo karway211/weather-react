@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './WeatherDate.scss';
 import WeatherDate from './WeatherDate';
 import { connect } from 'react-redux';

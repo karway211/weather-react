@@ -13,7 +13,7 @@ const mapStateToProps = (state) => ({
   // time: state.weatherBlock.time,
   temperature: state.weatherBlock.temperature,
   descToday: state.weatherBlock.descToday,
-  weatherThreeDay: state.weatherThreeDayBlock,
+  weatherThreeDay: state.weatherBlock.weatherThreeDay,
   location: state.weatherBlock.location,
 })
 

@@ -22,10 +22,14 @@
         height: 44px;
         outline: none;
         cursor: pointer;
-        &:active {
-            border-radius: 50%;
-        }
+        // &:active {
+        //     border-radius: 50%;
+        // }
     }
+  }
+
+  .unit-active {
+    border-radius: 50%;
   }
 
   &__select {

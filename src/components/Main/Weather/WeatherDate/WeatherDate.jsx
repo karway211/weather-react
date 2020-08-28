@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 import './WeatherDate.scss';
 
 const WeatherDate = ({time, setTime, lang, timezone}) => {
-
+// console.log(time)
   useEffect(() => {
     const interval = setInterval(() => {
       setTime(timezone, lang);
     }, 1000);
     return () => clearInterval(interval);
-  }, [timezone, lang]);
+  }, [timezone, lang, setTime]);
 
   return (
     <div className='weather__date'>

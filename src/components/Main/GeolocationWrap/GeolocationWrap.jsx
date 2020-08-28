@@ -12,7 +12,7 @@ const GeolocationWrap = ({setLocation, getPlace, getWeatherInit, lang}) => {
     longitude
   } = usePosition(watch);
 
-console.log(usePosition(watch));
+// console.log(usePosition(watch));
 
   useEffect(() => {
     if(latitude && longitude) {

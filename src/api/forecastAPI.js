@@ -3,7 +3,7 @@ import { instance } from "./api";
 export const forecast = {
   async getForecast(latitude, longitude, lang) {
     const response = await instance.get(`${latitude},${longitude}?lang=${lang}`);
-    console.log(response.data);
+    // console.log(response.data);
     return response.data;
   }
 }

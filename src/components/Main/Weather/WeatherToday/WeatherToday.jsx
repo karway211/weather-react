@@ -13,7 +13,7 @@ const WeatherToday = ({temperature, icon, summary, feelsLike, wind, humidity, la
         <ul className='weather__today__desc__list'>
           <li className='weather__today__desc__list-item summary'>{summary}</li>
           <li className='weather__today__desc__list-item feels'>{lang==='en'?`FEELS LIKE:`:`ОЩУЩАЕТСЯ КАК:`} {feelsLike}&deg;</li>
-          <li className='weather__today__desc__list-item wind'>{lang==='en'?`WIND:`:`ВЕТЕР:`} {wind} м/с</li>
+          <li className='weather__today__desc__list-item wind'>{lang==='en'?`WIND:`:`ВЕТЕР:`} {wind} {lang==='en'?`m/s`:`м/с`}</li>
           <li className='weather__today__desc__list-item humidity'>{lang==='en'?`HUMIDITY:`:`ВЛАЖНОСТЬ:`} {Math.ceil(humidity)}%</li>
         </ul>
       </div>

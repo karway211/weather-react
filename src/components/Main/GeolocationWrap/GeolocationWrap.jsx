@@ -27,8 +27,8 @@ const GeolocationWrap = ({setLocation, getPlace, getWeatherInit, lang}) => {
       <div className='geolocation__map-wrapper'>
         <Maps latitude={latitude} longitude={longitude} />
       </div>
-      <span className='geolocation--latitude'>Latitude: {latitude && latitude.toFixed(2)}</span>
-      <span className='geolocation--longitude'>Longitude: {longitude && longitude.toFixed(2)}</span>
+      <span className='geolocation--latitude'>{lang==='en'?'Latitude:':'Широта:'} {latitude && latitude.toFixed(2)}</span>
+      <span className='geolocation--longitude'>{lang==='en'?'Longitude:':'Долгота:'} {longitude && longitude.toFixed(2)}</span>
     </div>
   )
 }

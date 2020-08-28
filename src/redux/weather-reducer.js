@@ -47,7 +47,7 @@ const weatherReducer = (state = initialState, action) => {
         temperature: state.сelsius ? Math.round(((action.currently.temperature - 32) * 5) / 9): Math.round(action.currently.temperature),
         descToday: {icon: action.currently.icon,
                     summary: action.currently.summary,
-                    feelsLike: Math.round(((action.currently.apparentTemperature - 32) * 5) / 9),
+                    feelsLike: state.сelsius? Math.round(((action.currently.apparentTemperature - 32) * 5) / 9): Math.round(action.currently.apparentTemperature),
                     wind: Math.round((action.currently.windSpeed * 1000)/3600),
                     humidity: `${+action.currently.humidity * 100}`,
         }

@@ -1,7 +1,7 @@
 import React from 'react';
 import './WeatherToday.scss';
 
-const WeatherToday = ({temperature, icon, summary, feelsLike, wind, humidity}) => {
+const WeatherToday = ({temperature, icon, summary, feelsLike, wind, humidity, lang}) => {
 
   const image = `${process.env.PUBLIC_URL}assets/images/51/${icon}.svg`;
   
@@ -12,9 +12,9 @@ const WeatherToday = ({temperature, icon, summary, feelsLike, wind, humidity}) =
         <img className='weather__today__desc-image' src={image} alt="weather"/>
         <ul className='weather__today__desc__list'>
           <li className='weather__today__desc__list-item summary'>{summary}</li>
-          <li className='weather__today__desc__list-item feels'>FEELS LIKE: {feelsLike}&deg;</li>
-          <li className='weather__today__desc__list-item wind'>WIND: {wind} м/с</li>
-          <li className='weather__today__desc__list-item humidity'>HUMIDITY: {Math.ceil(humidity)}%</li>
+          <li className='weather__today__desc__list-item feels'>{lang==='en'?`FEELS LIKE:`:`ОЩУЩАЕТСЯ КАК:`} {feelsLike}&deg;</li>
+          <li className='weather__today__desc__list-item wind'>{lang==='en'?`WIND:`:`ВЕТЕР:`} {wind} м/с</li>
+          <li className='weather__today__desc__list-item humidity'>{lang==='en'?`HUMIDITY:`:`ВЛАЖНОСТЬ:`} {Math.ceil(humidity)}%</li>
         </ul>
       </div>
     </div>

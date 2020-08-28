@@ -15,6 +15,7 @@ const mapStateToProps = (state) => ({
   descToday: state.weatherBlock.descToday,
   weatherThreeDay: state.weatherBlock.weatherThreeDay,
   location: state.weatherBlock.location,
+  lang: state.weatherBlock.lang,
 })
 
 export default connect(mapStateToProps, {getWeatherInit})(WeatherContainer);

@@ -26,9 +26,9 @@ const Header = ({setLang, сelsius, setCelsius, setWeatherForToday, currentlyWea
         <button onClick={getFahrenheit} className={!сelsius?`${'header__param-fahrenheit'} ${'unit-active'}`:'header__param-fahrenheit'}>F&deg;</button>
       </div>
       <div className='header__searching'>
-        <input type="text" className='header__searching-city' placeholder='Search city' />
+        <input type="text" className='header__searching-city' placeholder={lang ==='en' ? 'Search city' : 'Поиск города'} />
         <button className='header__searching-voice'><i className="fa fa-microphone" /></button>
-        <button className='header__searching-bth'>SEARCH</button>
+        <button className='header__searching-bth'>{lang ==='en' ? 'SEARCH' : 'ПОИСК'}</button>
       </div>
     </header>
   )

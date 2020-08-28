@@ -5,13 +5,13 @@ import WeatherToday from './WeatherToday/WeatherToday';
 import WeatherCity from './WeatherCity/WeatherCity';
 import WeatherDateContainer from './WeatherDate/WeatherDateContainer';
 
-const Weather = ({place, temperature, descToday, weatherThreeDay}) => {
+const Weather = ({place, temperature, descToday, weatherThreeDay, lang}) => {
   // debugger;
   return (
     <div className='weather'>
       <WeatherCity place={place} />
       <WeatherDateContainer />
-      <WeatherToday temperature={temperature} {...descToday} />
+      <WeatherToday temperature={temperature} lang={lang} {...descToday} />
       <ThreeDays weatherThreeDay={weatherThreeDay} />
     </div>
   )

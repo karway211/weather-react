@@ -1,7 +1,9 @@
 import React from 'react';
 import './Header.scss';
+import AddCityFormRedux from './AddCityForm/AddCityForm';
+// import { getCityData } from '../../thunk/getCityData';
 
-const Header = ({setLang, сelsius, setCelsius, setWeatherForToday, currentlyWeather,setWeatherForThreeDays, lang, threeDays}) => {
+const Header = ({setLang, сelsius, setCelsius, setWeatherForToday, currentlyWeather,setWeatherForThreeDays, lang, threeDays, getCityData}) => {
   const langChange = e => {
     setLang(e.target.value);
   }
@@ -15,6 +17,10 @@ const Header = ({setLang, сelsius, setCelsius, setWeatherForToday, currentlyWea
     setWeatherForToday(currentlyWeather);
     setWeatherForThreeDays(threeDays, lang);
   }
+  const addNewCity = (values) => {
+    values.newCityBody.trim().length > 0 && getCityData(values.newCityBody, lang);
+    // alert(values.newCityBody);
+  }
   return (
     <header className='header'>
       <div className='header__param'>
@@ -25,11 +31,7 @@ const Header = ({setLang, сelsius, setCelsius, setWeatherForToday, currentlyWea
         <button onClick={getCelsius} className={сelsius?`${'header__param-celsius'} ${'unit-active'}`:'header__param-celsius'}>C&deg;</button>
         <button onClick={getFahrenheit} className={!сelsius?`${'header__param-fahrenheit'} ${'unit-active'}`:'header__param-fahrenheit'}>F&deg;</button>
       </div>
-      <div className='header__searching'>
-        <input type="text" className='header__searching-city' placeholder={lang ==='en' ? 'Search city' : 'Поиск города'} />
-        <button className='header__searching-voice'><i className="fa fa-microphone" /></button>
-        <button className='header__searching-bth'>{lang ==='en' ? 'SEARCH' : 'ПОИСК'}</button>
-      </div>
+      <AddCityFormRedux onSubmit={addNewCity} lang={lang} />
     </header>
   )
 }

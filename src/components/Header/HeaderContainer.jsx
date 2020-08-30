@@ -2,6 +2,7 @@ import './Header.scss';
 import { connect } from 'react-redux';
 import Header from './Header';
 import { actionsAC } from '../../redux/weather-reducer';
+import { getCityData } from '../../thunk/getCityData';
 
 const mapStateToProps = state => ({
   сelsius: state.weatherBlock.сelsius,
@@ -10,4 +11,4 @@ const mapStateToProps = state => ({
   lang: state.weatherBlock.lang,
 });
 
-export default connect(mapStateToProps, {...actionsAC})(Header);
+export default connect(mapStateToProps, {getCityData, ...actionsAC})(Header);

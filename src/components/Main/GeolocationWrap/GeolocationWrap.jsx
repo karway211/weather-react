@@ -4,23 +4,21 @@ import Maps from './Map/Map';
 import { usePosition } from 'use-position';
 
 
-const GeolocationWrap = ({setLocation, getPlace, getWeatherInit, lang}) => {
-
+const GeolocationWrap = ({setLocation, getPlace, getWeatherInit, lang, ...props}) => {
   const watch = true;
-  const {
-    latitude,
-    longitude
-  } = usePosition(watch);
-
-// console.log(usePosition(watch));
+  let { latitude, longitude } = usePosition(watch);
+  if (props.latitude) {
+    latitude = props.latitude;
+    longitude = props.longitude;
+  }
 
   useEffect(() => {
     if(latitude && longitude) {
-      setLocation(latitude, longitude);
+      !props.latitude && setLocation(latitude, longitude);
       getWeatherInit(latitude, longitude, lang);
       getPlace(latitude, longitude, lang);
     }
-  }, [setLocation, getPlace, getWeatherInit, latitude, longitude, lang])
+  }, [setLocation, getPlace, getWeatherInit, latitude, longitude, lang, props.latitude])
  
   return (
     <div className='geolocation-wrapper'>

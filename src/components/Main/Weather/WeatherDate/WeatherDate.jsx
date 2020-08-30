@@ -4,10 +4,12 @@ import './WeatherDate.scss';
 const WeatherDate = ({time, setTime, lang, timezone}) => {
 // console.log(time)
   useEffect(() => {
+    if (timezone) {
     const interval = setInterval(() => {
-      setTime(timezone, lang);
-    }, 1000);
-    return () => clearInterval(interval);
+          setTime(timezone, lang);
+        }, 1000);
+        return () => clearInterval(interval);
+    }
   }, [timezone, lang, setTime]);
 
   return (

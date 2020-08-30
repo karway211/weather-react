@@ -34,13 +34,13 @@ let initialState = {
       temperature: '20',
       icon: 'cloudy',
     }
-  }
+  },
+  city: '',
 }
 
 const weatherReducer = (state = initialState, action) => {
   switch(action.type) {
     case 'SET_WEATHER_FOR_TODAY':
-      // debugger;
       return {
         ...state,
         currentlyWeather: action.currently,
@@ -53,8 +53,6 @@ const weatherReducer = (state = initialState, action) => {
         }
       }
     case 'SET_LOCATION':
-      console.log(action.latitude)
-      console.log(action.longitude)
       return {
         ...state,
         location: {
@@ -78,12 +76,14 @@ const weatherReducer = (state = initialState, action) => {
         сelsius: action.isVal,
       }
     case 'SET_TIME':
+      console.log(action.timezone);
       let date = new Date();
       let options = { weekday: 'short', month: 'long', day: 'numeric', hour:"2-digit", minute:"2-digit", hour12: false, timeZone: action.timezone };
-      // console.log(date.toLocaleString(`${action.lang}-${action.lang.toUpperCase()}`, options));
+      const tz = new Intl.DateTimeFormat(`${action.lang}-${action.lang === 'en'?'US':'RU'}`, options).format(date);
       return {
         ...state,
-        time: date.toLocaleString(`${action.lang}-${action.lang === 'en' ? 'US': action.lang.toUpperCase()}`, options),
+        time: tz,
+        // time: date.toLocaleString(`${action.lang}-${action.lang === 'en' ? 'US': action.lang.toUpperCase()}`, options),
         timezone: action.timezone,
       }
       case 'SET_WEATHER_FOR_THREE_DAYS':
@@ -95,13 +95,12 @@ const weatherReducer = (state = initialState, action) => {
           return data
         });
         const [tomorrow, afterTomorrow, dayAfterTomorrow] = data;
-        console.log(tomorrow);
-        console.log(afterTomorrow);
-        console.log(dayAfterTomorrow);
         const getWeekDay = (time, lang) => {
           const date = new Date(+time*1000);
-          const options = { weekday: 'long'};
-          return date.toLocaleString(`${lang}-${lang.toUpperCase()}`, options);
+          const options = { weekday: 'long', timeZone: action.timezone};
+          const tz = new Intl.DateTimeFormat(`${lang}-${lang === 'en'?'US':'RU'}`, options).format(date)
+          return tz;
+          // return date.toLocaleString(`${lang}-${lang === 'en'?'US':lang.toUpperCase()}`, options);
         }
         const [tomorrowWeekDay, afterTomorrowWeekDay, dayAfterTomorrowWeekDay] = [getWeekDay(tomorrow.time, action.lang)
           , getWeekDay(afterTomorrow.time, action.lang), getWeekDay(dayAfterTomorrow.time, action.lang)];
@@ -132,6 +131,11 @@ const weatherReducer = (state = initialState, action) => {
             },
           },
         }
+      case 'SET_CITY':
+        return {
+          ...state,
+          city: action.city,
+        }
     default:
       return state;
   }
@@ -144,7 +148,8 @@ export const actionsAC = {
   setTime: (timezone, lang) => ({type: 'SET_TIME', timezone, lang}),
   setLang: (lang) => ({type: 'SET_LANG', lang}),
   setCelsius: (isVal) => ({type: 'SET_CELSIUS', isVal}),
-  setWeatherForThreeDays: (threeDays, lang) => ({type: 'SET_WEATHER_FOR_THREE_DAYS', threeDays, lang}),
+  setWeatherForThreeDays: (threeDays, lang, timezone) => ({type: 'SET_WEATHER_FOR_THREE_DAYS', threeDays, lang, timezone}),
+  setCity: (city) => ({type: 'SET_CITY', city}),
 }
 
 export default weatherReducer;

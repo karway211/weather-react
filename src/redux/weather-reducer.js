@@ -76,7 +76,7 @@ const weatherReducer = (state = initialState, action) => {
         сelsius: action.isVal,
       }
     case 'SET_TIME':
-      console.log(action.timezone);
+      // console.log(action.timezone);
       let date = new Date();
       let options = { weekday: 'short', month: 'long', day: 'numeric', hour:"2-digit", minute:"2-digit", hour12: false, timeZone: action.timezone };
       const tz = new Intl.DateTimeFormat(`${action.lang}-${action.lang === 'en'?'US':'RU'}`, options).format(date);

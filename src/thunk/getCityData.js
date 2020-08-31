@@ -6,11 +6,11 @@ export const getCityData = (city, lang) => {
     
     const data = await getCity(city, lang);
     let {pos} = data;
-    console.log(pos);
-    console.log(pos.split(' '));
+    // console.log(pos);
+    // console.log(pos.split(' '));
     const positions = pos.split(' ');
     const [longitude, latitude] = positions;
-    console.log(data);
+    // console.log(data);
     dispatch(actionsAC.setCity(city));
     dispatch(actionsAC.setLocation(+latitude, +longitude));
   }

@@ -36,6 +36,8 @@ let initialState = {
     }
   },
   city: '',
+  errorName: '',
+  linkToImage: '',
 }
 
 const weatherReducer = (state = initialState, action) => {
@@ -76,7 +78,6 @@ const weatherReducer = (state = initialState, action) => {
         сelsius: action.isVal,
       }
     case 'SET_TIME':
-      // console.log(action.timezone);
       let date = new Date();
       let options = { weekday: 'short', month: 'long', day: 'numeric', hour:"2-digit", minute:"2-digit", hour12: false, timeZone: action.timezone };
       const tz = new Intl.DateTimeFormat(`${action.lang}-${action.lang === 'en'?'US':'RU'}`, options).format(date);
@@ -136,6 +137,16 @@ const weatherReducer = (state = initialState, action) => {
           ...state,
           city: action.city,
         }
+      case 'SET_NEW_ERR':
+        return {
+          ...state,
+          errorName: action.newErr,
+        }
+      case 'SET_LINL_TO_IMAGE':
+        return {
+          ...state,
+          linkToImage: action.link,
+        }
     default:
       return state;
   }
@@ -150,6 +161,8 @@ export const actionsAC = {
   setCelsius: (isVal) => ({type: 'SET_CELSIUS', isVal}),
   setWeatherForThreeDays: (threeDays, lang, timezone) => ({type: 'SET_WEATHER_FOR_THREE_DAYS', threeDays, lang, timezone}),
   setCity: (city) => ({type: 'SET_CITY', city}),
+  setNewErr: (newErr) => ({type: 'SET_NEW_ERR', newErr}),
+  setLinkToImage: (link) => ({type: 'SET_LINL_TO_IMAGE', link}),
 }
 
 export default weatherReducer;

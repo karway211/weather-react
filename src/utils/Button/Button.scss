@@ -1,0 +1,25 @@
+.button-item {
+  background-color: #524d4d;
+  width: 44px;
+  height: 44px;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 0 0 0 #000,
+              inset 0 -5px 5px #000,
+              inset 0 2px 2px #fff,
+              0 0 0 1px #000,
+              0 0 0 1px #0f0f0f;
+  &-active {
+    color: #00ffe7;
+    text-shadow: 0 0 15px #00a1ff,
+                  0 0 30px #00a1ff;
+    box-shadow: 0 0 0 #000,
+                inset 0 -5px 5px #000,
+                inset 0 2px 2px #fff,
+                0 0 0 1px #000,
+                0 0 5px 1px #00a1ff,
+                0 0 0 1px #0f0f0f,
+                0 0 0 2px #00a1ff;
+  }
+}

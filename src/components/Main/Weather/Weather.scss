@@ -5,3 +5,9 @@
   justify-content: space-between;
   background: rgba(0, 0, 0, 0.3);
 }
+
+@media (max-width: 1151px) {
+  .weather {
+      margin-bottom: 10px;
+  }
+}

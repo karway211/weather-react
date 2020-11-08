@@ -6,7 +6,7 @@ export const getCity = async (city, lang) => {
   // const data = await response.json();
   // return data;
 
-  // try {
+  try {
       const baseUrl = 'https://geocode-maps.yandex.ru/1.x/';
       const clientAssKey = '?apikey=71561645-4edf-4651-bd23-4fd153d55e69&format=json';
       const cityString = `&geocode=${city}`;
@@ -14,9 +14,9 @@ export const getCity = async (city, lang) => {
       const url = baseUrl + clientAssKey + cityString + langString;
       const response = await fetch(url);
       const data = await response.json();
-      return data.response.GeoObjectCollection.featureMember[0].GeoObject.Point;
-  // } catch (err) {
-  //     alert('Sorry, unable to get city');
-  // }
-  // return null;
+      const [{GeoObject}] = data.response.GeoObjectCollection.featureMember;
+      return GeoObject.Point;
+  } catch (err) {
+    throw new Error('Enter the correct city name');
+  }
 };

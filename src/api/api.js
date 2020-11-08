@@ -7,3 +7,7 @@ export const instance = Axios.create({
 export const instanceMaps = Axios.create({
   baseURL: 'https://geocode-maps.yandex.ru/1.x/?apikey=71561645-4edf-4651-bd23-4fd153d55e69&format=json'
 });
+
+export const instancePicture = Axios.create({
+  baseURL: 'https://api.unsplash.com/photos/random'
+});

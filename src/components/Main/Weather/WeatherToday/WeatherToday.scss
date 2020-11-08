@@ -23,3 +23,20 @@
     }
   }
 }
+
+@media (max-width: 1160px) {
+  html {
+      font-size: 16px;
+  }
+  .weather__today-value {
+      line-height: 200px;
+  }
+}
+@media (max-width: 448px) {
+  .weather__today {
+      flex-wrap: wrap;
+      &-value {
+        line-height: 1;
+      }
+  }
+}

@@ -44,6 +44,7 @@ const CityForm = ({lang, city, getCityData, setCity}) => {
         <input className='header__searching-city'
               type='text'
               value={city}
+              onKeyPress={(e) => e.key === 'Enter' && onGetCity()}
               onChange={changeCity}
               placeholder={lang ==='en' ? 'Search city' : 'Поиск города'} />
         <button className={(listening && `header__searching-voice active-voice`) || 'header__searching-voice'}
